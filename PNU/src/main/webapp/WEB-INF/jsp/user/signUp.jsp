@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@  taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +14,6 @@
 			<thead>
 				<tr>
 					<th colspan="2">회원가입</th>
-					<td></td>
 				</tr>
 			</thead>
 			</tbody>
@@ -36,9 +37,9 @@
 					<th>부서*</th>
 					<td>
 						<select name="deptCd" required="required">
-							<option value="01">개발부</option>
-							<option value="02">영업부</option>
-							<option value="03">총무부</option>
+							<c:forEach items="${dept}" var="item">
+								<option value="${item.deptCd}">${item.deptNm}</option>
+							</c:forEach>
 						</select>
 					</td>
 				</tr>

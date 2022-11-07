@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import pnu.user.service.UserService;
 import pnu.user.vo.UserVO; 
@@ -21,15 +22,15 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
-	public String login(@ModelAttribute UserVO user) {
+	public ModelAndView login(@ModelAttribute UserVO user) {
 		
-		String userId = user.getUserId();
-		String pwd = user.getPwd();
-		
-		if(userService.selectPwd(userId, pwd)) {
-			return "main.jsp";
+		if(userService.selectPwd(user.getUserId(), user.getPwd())) {
+			ModelAndView mav = new ModelAndView("main.jsp");
+			mav.addObject("user", userService.selectUserInfo(user.getUserId()));
+			return mav;
 		} else {
-			return "login.jsp"; 
+			ModelAndView mav = new ModelAndView("login.jsp");
+			return mav; 
 		}
 		
 		
