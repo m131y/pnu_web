@@ -9,4 +9,6 @@ public interface UserDAO {
 	public int insertUser(UserVO user);
 	
 	public UserVO selectUserInfo(String userId);
+	
+	public int updateUser(UserVO user);
 }

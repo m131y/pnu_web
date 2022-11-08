@@ -4,7 +4,6 @@ public class DeptVO {
 	private String deptCd;
 	private String deptNm;
 	
-	
 	public String getDeptCd() {
 		return deptCd;
 	}
@@ -17,6 +16,5 @@ public class DeptVO {
 	public void setDeptNm(String deptNm) {
 		this.deptNm = deptNm;
 	}
-	
 	
 }

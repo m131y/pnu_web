@@ -9,19 +9,15 @@ import pnu.dept.dao.DeptDAO;
 import pnu.dept.service.DeptService;
 import pnu.dept.vo.DeptVO;
 
-
 @Service
-public class DeptServiceImpl implements DeptService{
-	
+public class DeptServiceImpl implements DeptService {
 	@Autowired
 	DeptDAO deptDAO;
 	
 	
 	@Override
 	public List<DeptVO> selectDeptList() {
-		
 		return deptDAO.selectDeptList();
 	}
-	
 
 }

@@ -1,5 +1,9 @@
 package pnu.user.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,8 +15,6 @@ import pnu.dept.service.DeptService;
 import pnu.dept.vo.DeptVO;
 import pnu.user.service.UserService;
 import pnu.user.vo.UserVO;
-
-import java.util.List;
 
 @Controller
 public class UserController {
@@ -29,15 +31,40 @@ public class UserController {
 		mav.addObject("dept", dept);
 		
 		return mav;
-		
 	}
 	
 	@RequestMapping(value="/signUp.do", method = RequestMethod.POST)
 	public String signUp(@ModelAttribute UserVO user) {
-		
 		userService.insertUser(user);
 		
 		return "redirect:/loginPage.do";
-		
 	}
+	
+	@RequestMapping(value="/pwdConfirmPage.do", method = RequestMethod.GET)
+	public String pwdConfirmPage() {
+		return "user/pwdConfirm.jsp";
+	}
+	
+	@RequestMapping(value="/userUpdatePage.do", method = RequestMethod.POST)
+	public ModelAndView userUpdatePage(@ModelAttribute UserVO user) {
+		if(userService.selectPwd(user.getUserId(), user.getPwd())) {
+			ModelAndView mav = new ModelAndView("user/userUpdate.jsp");
+			List<DeptVO> dept = deptService.selectDeptList();
+			mav.addObject("dept", dept);
+			
+			return mav;
+		} else {
+			ModelAndView mav = new ModelAndView("main.jsp");
+			return mav;			
+		}
+	}
+	
+	@RequestMapping(value="/userUpdate.do", method = RequestMethod.POST)
+	public String updateUser(HttpSession session, @ModelAttribute UserVO user) {
+		userService.updateUser(user);
+		userService.setSession(session, user.getUserId());
+		
+		return "main.jsp";
+	}
+	
 }
