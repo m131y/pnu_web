@@ -17,9 +17,9 @@ public class UserVO {
 	private String phone;
 	
 	private String email;
-
-	private String used;
 	
+	private String used;
+
 	public String getUserId() {
 		return userId;
 	}
@@ -91,7 +91,5 @@ public class UserVO {
 	public void setUsed(String used) {
 		this.used = used;
 	}
-	
-	
 	
 }

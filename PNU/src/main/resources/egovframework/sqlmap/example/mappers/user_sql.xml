@@ -77,11 +77,9 @@
 			UPDATE tb_user
 			SET
 				used = 'N'
-			WHERE 
-				user_id = #{userId}
+			WHERE
+				user_id = #{userId};
 		]]>
 	</delete>
-	
-	
 	
 </mapper>

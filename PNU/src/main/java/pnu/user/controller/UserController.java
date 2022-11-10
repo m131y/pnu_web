@@ -66,7 +66,7 @@ public class UserController {
 		
 		return "main.jsp";
 	}
-	
+
 	@RequestMapping(value="/userDelete.do")
 	public String userDelete(HttpSession session) {
 		UserVO userInfo = (UserVO) session.getAttribute("USER");

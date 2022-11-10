@@ -1,7 +1,6 @@
 package pnu.board.vo;
 
 public class BoardVO {
-	
 	private int boardId;
 	
 	private String title;
@@ -10,19 +9,11 @@ public class BoardVO {
 	
 	private String writerId;
 	
+	private String writerName;
+	
 	private String registrationDate;
 	
 	private String used;
-	
-	private String writerName;
-
-	public String getWriterName() {
-		return writerName;
-	}
-
-	public void setWriterName(String writerName) {
-		this.writerName = writerName;
-	}
 
 	public int getBoardId() {
 		return boardId;
@@ -56,6 +47,14 @@ public class BoardVO {
 		this.writerId = writerId;
 	}
 
+	public String getWriterName() {
+		return writerName;
+	}
+
+	public void setWriterName(String writerName) {
+		this.writerName = writerName;
+	}
+
 	public String getRegistrationDate() {
 		return registrationDate;
 	}
@@ -71,6 +70,5 @@ public class BoardVO {
 	public void setUsed(String used) {
 		this.used = used;
 	}
-	
 	
 }

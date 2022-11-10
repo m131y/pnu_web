@@ -5,14 +5,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>게시판</title>
+	<meta charset="UTF-8">
+	<title>게시판</title>
+	<style type="text/css">
+		tbody tr:hover { background-color : lightyellow };
+	</style>
 </head>
 <body>
 	<header>
-		<div style="display:flex;  ">
-			<h5>[${USER.name}]님, 반갑습니다.</h5>
-			<div style="margin:auto;">
+		<div style="display: flex;">
+			<h5>[${USER.name}]님 반갑습니다.</h5>
+			<div style="margin: auto;">
 				<button type="button" onclick="window.location.href='main.do'">회원정보</button>
 				<button type="button" onclick="window.location.href='logout.do'">로그아웃</button>
 			</div>
@@ -32,24 +35,30 @@
 			</thead>
 			<tbody>
 				<c:forEach items="${boardList}" var="item">
-					<tr>
+					<tr onclick="trDblClickEvent('${item.boardId}')">
 						<td><c:out value="${item.boardId}"/></td>
 						<td><c:out value="${item.title}"/></td>
 						<td><c:out value="${item.writerName}"/></td>
 						<td>
 							<fmt:parseDate value="${item.registrationDate}"
-								pattern="yyyy-mm-dd hh:mm" var="registrationDate"/>
-							<fmt:formatDate value="${registrationDate}"
-								pattern="yyyy년  mm월 dd일 hh:mm"/>
+								pattern="yyyy-MM-dd HH:mm" var="registrationDate" />
+							<fmt:formatDate value="${registrationDate }"
+								pattern="yyyy년MM월dd일 HH:mm"/>
 						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
+		
 		</table>
 		
-		<button type="button" onclick="window.location.href='boardInsertPage.do'">게시글등록</button>
+		<button type="button" onclick="window.location.href='boardInsertPage.do'">게시글 등록</button>
 	</section>
-	
+
+	<script type="text/javascript">
+		function trDblClickEvent(boardId) {
+			location.href = "boardInfoPage/" + boardId + ".do";
+		}
+	</script>
 	
 </body>
 </html>

@@ -6,6 +6,8 @@ import pnu.user.vo.UserVO;
 
 public interface UserService {
 	
+	public String selectUsed(String userId);
+	
 	public Boolean selectPwd(String userId, String pwd);
 	
 	public int insertUser(UserVO user);
@@ -18,5 +20,4 @@ public interface UserService {
 	
 	public int deleteUser(String userId);
 	
-	public String selectUsed(String userId);
 }

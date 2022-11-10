@@ -1,37 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Board">
-
-	<resultMap type="boardMap" id="BoardVO">
-		<id property="boardId"				column="board_id"/>
-		<result property="title"			column="title"/>
-		<result property="contents"			column="contents"/>
-		<result property="writerId"			column="writer_id"/>
-		<result property="registrationDate"	column="registration_date"/>
-		<result property="used"				column="used"/>
-		<result property="writerName"		column="writer_name"/>
-	</resultMap>
 	
-	<insert id="insertBoard" parameterType="boardMap">
-		<![CDATA[
-			INSERT INTO tb_board(title, contents, writer_id, registration_date)
-			VALUES
-			 (#{title}, #{contents}, #{writerId}, NOW());
-		]]>
-	</insert>
+	<resultMap type="boardMap" id="BoardVO">
+		<id property="boardId"		column="board_id" />
+		<result property="title"	column="title" />
+		<result property="contents"	column="contents" />
+		<result property="writerId"	column="writer_id" />
+		<result property="writerName" column="writer_name" />
+		<result property="registrationDate"	column="registration_date" />
+		<result property="used"	column="used" />
+	</resultMap>
 	
 	<select id="selectBoardList" resultMap="BoardVO">
 		<![CDATA[
-			SELECT
+			SELECT 
 				board_id, title, contents, registration_date, writer_id,
 				U.name AS writer_name
 			FROM 
 				tb_board B
-			LEFT JOIN tb_user U ON ( B.writer_id = U.user_id)
+			LEFT JOIN tb_user U ON (B.writer_id = U.user_id)
 			WHERE B.used = 'Y';
 		]]>
 	</select>
 	
+	<insert id="insertBoard" parameterType="boardMap">
+		<![CDATA[
+			INSERT INTO tb_board (title, contents, writer_id, registration_date)
+			VALUES
+				(#{title}, #{contents}, #{writerId}, NOW());
+		]]>
+	</insert>
 	
+	<select id="selectBoard" resultMap="BoardVO">
+		<![CDATA[
+			SELECT B.*, U.name AS writer_name
+			FROM tb_board B
+			LEFT JOIN tb_user U ON ( B.writer_id = U.user_id)
+			WHERE B.board_id = ${board_id};
+
+		]]>
+	
+	</select>
 	
 </mapper>

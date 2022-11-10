@@ -12,15 +12,14 @@
 		<table>
 			<tr>
 				<th>제목</th>
-				<td><input type="text" name="title"/></td>
-			</tr>	
+				<td><input type="text" name="title"></td>
+			</tr>
 			<tr>
-				<th>내용></th>
+				<th>내용</th>
 				<td><textarea name="contents"></textarea></td>
 			</tr>
 		</table>
 		<button type="submit">등록</button>
 	</form>
-
 </body>
 </html>

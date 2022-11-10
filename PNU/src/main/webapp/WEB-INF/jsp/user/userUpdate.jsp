@@ -63,35 +63,31 @@
 		<button type="button" id="deleteBtn">회원탈퇴</button>
 	</form>
 </body>
-
+<script src="${pageContext.request.contextPath }/js/jquery-3.6.1.min.js"></script>
 <script>
 	
 	window.onload = function() {
 		
-		var okBtn = document.getElementById("okBtn");
-		
-		okBtn.onclick = function() {
-			var pwd1 = document.getElementById("pwdInput1").value;
-			var pwd2 = document.getElementById("pwdInput2").value;
+		$("#okBtn").click(function() {
+			var pwdInput1 = $("#pwdInput1").val();
+			var pwdInput2 = $("#pwdInput2").val();
 			
-			console.log(pwd1, pwd2);
-			
-			if(pwd1 == pwd2) {
-// 				document.getElementById("userUpdateForm").submit();
+			if(pwdInput1 == pwdInput2){
+				$("#userUpdateForm").submit();
 			} else {
-				alert("비밀번호가 일치하지 않습니다.");
+				alert("비밀번호를 확인해주세요.");
 			}
-		}
+		});
 		
-		var deleteBtn = document.getElementById("deleteBtn");
-		
-		deleteBtn.onclick = function() {
-			if(confirm("정말로 탈퇴하시겠습니까?")){
-				window.location.href = "userDelete.do";
+		$("#deleteBtn").click(function() {
+			var del = confirm("탈퇴하시겠습니까?");
+			if(del) {
+				window.location.href='userDelete.do';
 			} else {
 				return false;
 			}
-		}
+		});
+		
 	}
 	
 </script>

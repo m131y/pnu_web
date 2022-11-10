@@ -16,7 +16,6 @@
 	
 	<button type="button" onclick="window.location.href='logout.do'">로그아웃</button>
 	<button type="button" onclick="window.location.href='pwdConfirmPage.do'">회원정보수정</button>
-	<button type="button" onclick="window.location.href='boardListPage.do'">게시판보기</button>
-	
+	<button type="button" onclick="window.location.href='boardListPage.do'">게시판</button>
 </body>
 </html>

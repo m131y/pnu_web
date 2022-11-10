@@ -8,6 +8,11 @@ import pnu.user.vo.UserVO;
 
 @Repository
 public class UserDAOImpl extends EgovAbstractMapper implements UserDAO {
+
+	@Override
+	public String selectUsed(String userId) {
+		return selectOne("User.selectUsed", userId);
+	}
 	
 	@Override
 	public String selectPwd(String userId) {
@@ -31,12 +36,8 @@ public class UserDAOImpl extends EgovAbstractMapper implements UserDAO {
 
 	@Override
 	public int deleteUser(String userId) {
-		return delete("User.deleteUser", userId);
-	}
-
-	@Override
-	public String selectUsed(String userId) {
-		return selectOne("User.selectUsed", userId);
+		// TODO 사용자 삭제
+		return update("User.deleteUser", userId);
 	}
 	
 }

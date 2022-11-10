@@ -30,7 +30,7 @@ public class MainController {
 
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
 	public String login(HttpSession session, @ModelAttribute UserVO user) {
-		if(userService.selectUsed(user.getUserId()).equals("Y") &&
+		if(userService.selectUsed(user.getUserId()).equals("Y") && 
 				userService.selectPwd(user.getUserId(), user.getPwd())) {
 			userService.setSession(session, user.getUserId());
 			
@@ -43,6 +43,7 @@ public class MainController {
 	@RequestMapping(value="/logout.do", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.removeAttribute("USER");
+		
 		return "login.jsp";
 	}
 	

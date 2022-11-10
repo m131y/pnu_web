@@ -63,24 +63,20 @@
 </body>
 
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-<script >
+<script>
 	
 	window.onload = function() {
 		
-		var okBtn = document.getElementById("okBtn");
-		
-		okBtn.onclick = function() {
-			var pwd1 = document.getElementById("pwdInput1").value;
-			var pwd2 = document.getElementById("pwdInput2").value;
+		$("#okBtn").click(function() {
+			var pwdInput1 = $("#pwdInput1").val();
+			var pwdInput2 = $("#pwdInput2").val();
 			
-			console.log(pwd1, pwd2);
-			
-			if(pwd1 == pwd2) {	
-				document.getElementById("signUpForm").submit();
+			if(pwdInput1 == pwdInput2){
+				$("#signUpForm").submit();
 			} else {
-				alert("비밀번호가 일치하지 않습니다.");
+				alert("비밀번호를 확인해주세요.");
 			}
-		}
+		});
 	}
 	
 </script>

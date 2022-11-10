@@ -14,6 +14,11 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	UserDAO userDAO;
+
+	@Override
+	public String selectUsed(String userId) {
+		return userDAO.selectUsed(userId);
+	}
 	
 	@Override
 	public Boolean selectPwd(String userId, String pwd) {
@@ -49,11 +54,6 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int deleteUser(String userId) {
 		return userDAO.deleteUser(userId);
-	}
-
-	@Override
-	public String selectUsed(String userId) {
-		return userDAO.selectUsed(userId); //yes or no가 리턴된다.
 	}
 
 }
