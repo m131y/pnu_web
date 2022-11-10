@@ -46,4 +46,14 @@ public class UserServiceImpl implements UserService {
 		return userDAO.updateUser(user);
 	}
 
+	@Override
+	public int deleteUser(String userId) {
+		return userDAO.deleteUser(userId);
+	}
+
+	@Override
+	public String selectUsed(String userId) {
+		return userDAO.selectUsed(userId); //yes or no가 리턴된다.
+	}
+
 }

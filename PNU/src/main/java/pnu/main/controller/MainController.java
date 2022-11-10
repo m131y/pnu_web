@@ -30,7 +30,8 @@ public class MainController {
 
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
 	public String login(HttpSession session, @ModelAttribute UserVO user) {
-		if(userService.selectPwd(user.getUserId(), user.getPwd())) {
+		if(userService.selectUsed(user.getUserId()).equals("Y") &&
+				userService.selectPwd(user.getUserId(), user.getPwd())) {
 			userService.setSession(session, user.getUserId());
 			
 			return "main.jsp";

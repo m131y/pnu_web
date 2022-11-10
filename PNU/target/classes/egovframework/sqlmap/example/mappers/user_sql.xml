@@ -11,7 +11,19 @@
 		<result property="phone" 	column="phone"/>
 		<result property="email" 	column="email" />
 		<result property="deptNm"	column="dept_nm" />
+		<result property="used"		column="used" />
 	</resultMap>
+	
+	<select id="selectUsed" parameterType="String" resultType="String">
+		<![CDATA[
+			SELECT
+				used
+			FROM
+				tb_user
+			WHERE
+				user_id = #{userId};
+		]]>
+	</select>
 	
 	<select id="selectPwd" parameterType="String" resultType="String">
 		<![CDATA[
@@ -59,5 +71,17 @@
 				user_id = #{userId}
 		]]>
 	</update>
+	
+	<delete id="deleteUser" parameterType="String">
+		<![CDATA[
+			UPDATE tb_user
+			SET
+				used = 'N'
+			WHERE 
+				user_id = #{userId}
+		]]>
+	</delete>
+	
+	
 	
 </mapper>

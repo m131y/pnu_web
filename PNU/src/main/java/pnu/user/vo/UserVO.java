@@ -18,6 +18,8 @@ public class UserVO {
 	
 	private String email;
 
+	private String used;
+	
 	public String getUserId() {
 		return userId;
 	}
@@ -80,6 +82,14 @@ public class UserVO {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getUsed() {
+		return used;
+	}
+
+	public void setUsed(String used) {
+		this.used = used;
 	}
 	
 	

@@ -60,6 +60,7 @@
 		
 		<button type="button" onclick="window.history.back()">이전</button>
 		<button type="button" id="okBtn">확인</button>
+		<button type="button" id="deleteBtn">회원탈퇴</button>
 	</form>
 </body>
 
@@ -76,9 +77,19 @@
 			console.log(pwd1, pwd2);
 			
 			if(pwd1 == pwd2) {
-				document.getElementById("userUpdateForm").submit();
+// 				document.getElementById("userUpdateForm").submit();
 			} else {
 				alert("비밀번호가 일치하지 않습니다.");
+			}
+		}
+		
+		var deleteBtn = document.getElementById("deleteBtn");
+		
+		deleteBtn.onclick = function() {
+			if(confirm("정말로 탈퇴하시겠습니까?")){
+				window.location.href = "userDelete.do";
+			} else {
+				return false;
 			}
 		}
 	}

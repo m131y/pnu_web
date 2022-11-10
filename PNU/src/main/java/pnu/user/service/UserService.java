@@ -15,4 +15,8 @@ public interface UserService {
 	public Boolean setSession(HttpSession session, String userId);
 	
 	public int updateUser(UserVO user);
+	
+	public int deleteUser(String userId);
+	
+	public String selectUsed(String userId);
 }

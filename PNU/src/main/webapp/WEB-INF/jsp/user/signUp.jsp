@@ -62,7 +62,8 @@
 	</form>
 </body>
 
-<script>
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<script >
 	
 	window.onload = function() {
 		
@@ -74,7 +75,7 @@
 			
 			console.log(pwd1, pwd2);
 			
-			if(pwd1 == pwd2) {
+			if(pwd1 == pwd2) {	
 				document.getElementById("signUpForm").submit();
 			} else {
 				alert("비밀번호가 일치하지 않습니다.");
